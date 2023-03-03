@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublisherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index' ,[
+        'title' => "Home"
+    ]);
+});
+
+Route::get('/publishers', [PublisherController::class, 'index']);
+
+Route::get('/publishers/{id}', [PublisherController::class, 'show']);
+
+Route::get('/journals', function () {
+    return view('journal' ,[
+        'title' => "Journal"
+    ]);
+});
+
+Route::get('/subjects', function () {
+    return view('subject' ,[
+        'title' => "Subject"
+    ]);
 });
