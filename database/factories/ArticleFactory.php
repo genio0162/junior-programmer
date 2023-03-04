@@ -23,7 +23,6 @@ class ArticleFactory extends Factory
             'publisher_id' => mt_rand(1,50),
             'abstract' => fake()->text(200),
             'description' => fake()->text(100),
-            'subject_id' => mt_rand(1,10)
         ];
     }
 }

@@ -35,21 +35,20 @@
       <ul class="job-listings mb-5">
         @foreach ($publishers as $publisher )
         <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-          <a href="publishers/{{ $publisher['id'] }}"></a>
+          <a href="publishers/{{ $publisher->id }}"></a>
           <div class="job-listing-logo">
-            <img src="images/{{ $publisher["img"] }}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+            <img src="images/{{ $publisher->img }}" alt="Free Website Template by Free-Template.co" class="img-fluid">
           </div>
-
           <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-              <h2>{{ $publisher['name']}}</h2>
-              <strong>{{ $publisher['alias'] }}</strong>
+            <div class="job-listing-position custom-width w-25 mb-3 mb-sm-0">
+              <h2>{{ $publisher->name}}</h2>
+              <strong>{{ $publisher->alias }}</strong>
             </div>
             <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-              <span class="icon-room"></span> {{ $publisher['website'] }}
+              <span class="icon-link"></span> {{ $publisher->website }}
             </div>
             <div class="job-listing-meta">
-              <span> 1 Journal</span>
+              <span> {{ $publisher->journal->count() }} Journal</span>
             </div>
           </div>
         </li>

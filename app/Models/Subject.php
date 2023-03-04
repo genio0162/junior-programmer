@@ -9,4 +9,9 @@ class Subject extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function journals()
+    {
+        return $this->belongsToMany(Journal::class);
+    }
 }

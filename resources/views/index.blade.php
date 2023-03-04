@@ -8,7 +8,7 @@
           <div class="col-md-12">
             <div class="mb-5 text-center">
               <h1 class="text-white font-weight-bold">The Easiest Way To Get Reseach Articles</h1>
-              <p>Search within 2,494,734 indexed articles</p>
+              <p>Search within {{ $articles->count() }} indexed articles</p>
             </div>
             <form method="post" class="search-jobs-form">
               <div class="row mb-5">
@@ -52,14 +52,14 @@
 
           <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
             <div class="d-flex align-items-center justify-content-center mb-2">
-              <strong class="number" data-number="1930">0</strong>
+              <strong class="number" data-number="{{ $publishers->count() }}">0</strong>
             </div>
             <span class="caption">Publisher</span>
           </div>
 
           <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
             <div class="d-flex align-items-center justify-content-center mb-2">
-              <strong class="number" data-number="54">0</strong>
+              <strong class="number" data-number="{{ $journals->count() }}">0</strong>
             </div>
             <span class="caption">Journals</span>
           </div>
@@ -75,7 +75,7 @@
 
         <div class="row mb-5 justify-content-center">
           <div class="col-md-7 text-center">
-            <h2 class="section-title mb-2">43,167 Articles</h2>
+            <h2 class="section-title mb-2">{{ $articles->count() }} Articles</h2>
           </div>
         </div>
 

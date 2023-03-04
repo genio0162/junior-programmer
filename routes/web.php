@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\JournalController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\PublisherController;
+use App\Models\Article;
+use App\Models\Journal;
+use App\Models\Publisher;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,22 +21,17 @@ use App\Http\Controllers\PublisherController;
 
 Route::get('/', function () {
     return view('index' ,[
-        'title' => "Home"
+        'title' => "Home",
+        'publishers' => Publisher::all(),
+        'journals' => Journal::all(),
+        'articles' => Article::all()
     ]);
 });
 
 Route::get('/publishers', [PublisherController::class, 'index']);
-
 Route::get('/publishers/{id}', [PublisherController::class, 'show']);
 
-Route::get('/journals', function () {
-    return view('journal' ,[
-        'title' => "Journal"
-    ]);
-});
+Route::get('/journals', [JournalController::class, 'index']);
+Route::get('/journals/{id}', [JournalController::class, 'show']);
 
-Route::get('/subjects', function () {
-    return view('subject' ,[
-        'title' => "Subject"
-    ]);
-});
+Route::get('/subjects', [SubjectController::class, 'index']);

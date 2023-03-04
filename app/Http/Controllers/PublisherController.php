@@ -19,7 +19,7 @@ public function show($id){
     return view('publisher' ,[
         'title' => "Publisher",
         'publisher' => Publisher::find($id),
-        'journals' => Journal::paginate(5),
+        'journals' => Journal::where('publisher_id', $id)->paginate(5),
         'total' => Journal::all()
     ]);
 }

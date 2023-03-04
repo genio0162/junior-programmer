@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('publisher_id');
             $table->string('issn')->unique();
             $table->string('eissn')->unique()->nullable();
-            $table->foreignId('subject_id');
             $table->timestamps();
         });
     }

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('journal_id');
             $table->text('abstract');
             $table->string('description');
-            $table->foreignId('subject_id');
             $table->timestamps();
         });
     }

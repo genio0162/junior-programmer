@@ -17,14 +17,13 @@ class JournalFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
+            'title' => fake()->sentence(3),
             'img' => 'journal.jpg',
             'abstract' => fake()->text(250),
             'website' => 'www.unmuh.com',
             'publisher_id' => mt_rand(1,50),
             'issn' => fake()->randomNumber(5, true),
-            'eissn' =>  fake()->regexify('[1-5]{4}[A-Z]{1}'),
-            'subject_id' => mt_rand(1,10)
+            'eissn' =>  fake()->regexify('[1-5]{4}[A-Z]{1}')
         ];
     }
 }

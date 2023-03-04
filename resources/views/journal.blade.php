@@ -12,31 +12,41 @@
         </div>
       </div>
     </div>
-    <section class="site-section services-section bg-light block__62849" id="next-section">
-        <div class="container">
+  </section>
 
-          <div class="row">
-            @foreach ($subjects as $subject )
-            <div class="col-12 col-md-12 col-lg-2 mb-4 mb-lg-5">
-              <a href="service-single.html" class="block__16443 text-center d-block">
-                <span class="custom-icon mx-auto"><span class="icon-tag d-block"></span></span>
-                <h3>{{ $subject->name }}</h3>
-              </a>
+
+  <section class="site-section">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+          <div class="d-flex align-items-center">
+            <div class="border p-2 d-inline-block mr-3 rounded">
+              <img src="../images/{{ $journal->img }}" alt="Image">
             </div>
-            @endforeach
+            <div>
+              <h2>{{ $journal->title }}</h2>
+              <div>
+                <span class="m-2"><span class="icon-room mr-2"></span> Published By, {{$journal->publisher->name}}</span><br>
+                <span class="m-2"><span class="icon-note mr-2"></span> ISSN: {{ $journal->issn }} </span>
+                <span class="m-2"><span class="icon-note mr-2"></span>  EISSN: {{ $journal->eissn }} </span><br>
+                <span class="m-2"><span class="icon-tag mr-2"></span>
+                @foreach ($journal->subjects as $s )
+                <a href="/subjects/{{ $s->slug }}"> {{ $s->name }} </a>|
+                @endforeach
+            </span>
+                <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="http://{{ $journal->website }}">{{ $journal->website }}</a></span></span>
+              </div><br>
+              <p>{{ $journal->abstract }}</p>
+            </div>
           </div>
-
+        </div>
+      </div>
       <section class="site-section">
         <div class="container">
-          <div class="row mb-5 justify-content-center">
-            <div class="col-md-7 text-center">
-              <h2 class="section-title mb-2">{{ $total->count() }} journal</h2>
-            </div>
-          </div>
           <form method="post" class="search-jobs-form">
             <div class="row mb-5">
               <div class="col-12 col-sm-6 col-md-6 col-lg-9 mb-4 mb-lg-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Journal Name ...">
+                <input type="text" class="form-control form-control-lg" placeholder="Journal Name, ISSN, EISSN ...">
               </div>
               <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                 <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search</button>
@@ -46,23 +56,17 @@
 
 
           <ul class="job-listings mb-5">
-            @foreach ($journals as $journal )
+            @foreach ($articles as $article )
             <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-              <a href="journals/{{ $journal['id'] }}"></a>
-              <div class="job-listing-logo">
-                <img src="../images/{{ $journal["img"] }}" alt="Free Website Template by Free-Template.co" class="img-fluid">
-              </div>
+              <a href="articles/{{ $article->id }}">{{ $article->title }}</a>
 
               <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                 <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                  <h2>{{ $journal['title']}}</h2>
-                  <strong>{{ $journal[''] }}</strong>
+                  {{-- <strong>{{ $journal->publisher->name }}</strong><br>
+                  <strong>JOURNAL ISSN: {{ $journal->issn }} EISSN: {{ $journal->eissn }}</strong> --}}
                 </div>
                 <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                  <span class="icon-room"></span> {{ $journal['website'] }}
-                </div>
-                <div class="job-listing-meta">
-                  <span> 1 Journal</span>
+                  {{-- <span class="icon-room"></span> {{ $journal['website'] }} --}}
                 </div>
               </div>
             </li>
@@ -76,15 +80,13 @@
             <div class="col-md-6 text-center text-md-right">
               <div class="ml-auto">
                 <div class="d-inline-block">
-                  {{ $journals->links() }}
+                  {{ $articles  ->links() }}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-        </div>
-      </section>
-
-
-  @endsection
+    </div>
+  </section>
+@endsection

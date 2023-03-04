@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Subject>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class SubjectFactory extends Factory
+class JournalSubjectFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,8 @@ class SubjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word(),
-            'slug' => fake()->slug()
+            'subject_id' => mt_rand(1,10),
+            'journal_id' => mt_rand(1,50)
         ];
     }
 }

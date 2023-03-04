@@ -9,4 +9,13 @@ class Journal extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function publisher(){
+        return $this->belongsTo(Publisher::class);
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
 }

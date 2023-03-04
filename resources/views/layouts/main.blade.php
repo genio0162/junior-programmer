@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../fonts/line-icons/style.css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../css/style.css">
