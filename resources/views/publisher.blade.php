@@ -30,7 +30,7 @@
                 <span class="m-2"><span class="icon-room mr-2"></span>{{ $publisher->city .', '. $publisher->province }}</span>
                 <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="http://{{ $publisher->website }}">{{ $publisher->website }}</a></span></span>
               </div><br>
-              <h5>{{ $publisher->journal->count() }} Journal Published</h5>
+              <h5>{{ $publisher->journals->count() }} Journal Published</h5>
             </div>
           </div>
         </div>
@@ -49,31 +49,40 @@
           </form>
 
 
-          <ul class="job-listings mb-5">
+          <ul class="mb-5">
             @foreach ($journals as $journal )
             <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-              <a href="/journals/{{ $journal->id }}"></a>
-              <div class="job-listing-logo">
-                <img src="../images/{{ $journal->img }}" alt="Free Website Template by Free-Template.co" class="img-fluid">
-              </div>
+                <a href="/journals/{{ $journal->id }}"></a>
+                <div class="job-listing-logo">
+                  <img src="../images/{{ $journal->img }}" class="img-fluid">
+                </div>
 
-              <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-                <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                  <h2>{{ $journal->title}}</h2>
-                  <strong>{{ $journal->publisher->name }}</strong><br>
-                  <strong>JOURNAL ISSN: {{ $journal->issn }} EISSN: {{ $journal->eissn }}</strong>
+                <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                  <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                    <a href="/journals/{{ $journal->id }}"><h2>{{ $journal->title}}</h2></a>
+                    <strong>{{ $journal->publisher->name }}</strong><br>
+                    <strong>JOURNAL ISSN: {{ $journal->issn }} EISSN: {{ $journal->eissn }}</strong><br>
+                    @foreach ($journal->subjects as $s )
+                    <strong class="icon-tag mr-2">
+                      <a href="/subjects/{{ $s->id }}">{{ $s->name }}</a>&nbsp |
+                    </strong>
+                    @endforeach
+                  </div>
+                  <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                    <span class="icon-link"><a href="http://{{ $journal->webiste }}"> {{ $journal->website }}</a></span>
+                  </div>
                 </div>
-                <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                  <span class="icon-room"></span> {{ $journal['website'] }}
-                </div>
-              </div>
-            </li>
+              </li>
             @endforeach
           </ul>
 
           <div class="row pagination-wrap">
             <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-              <span>Showing 1-5 Of {{ $total->count() }} journals</span>
+              @if ( $total->count()  >= 5)
+              <span>Showing 1-5 Of {{ $total->count() }} Journals</span>
+              @else
+              <span>Showing {{ $total->count() }} Journals</span>
+              @endif
             </div>
             <div class="col-md-6 text-center text-md-right">
               <div class="ml-auto">

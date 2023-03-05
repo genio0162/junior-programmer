@@ -32,23 +32,23 @@
       </form>
 
 
-      <ul class="job-listings mb-5">
+      <ul class="mb-5">
         @foreach ($publishers as $publisher )
         <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
           <a href="publishers/{{ $publisher->id }}"></a>
           <div class="job-listing-logo">
-            <img src="images/{{ $publisher->img }}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+            <a href="publishers/{{ $publisher->id }}"><img src="images/{{ $publisher->img }}" class="img-fluid"></a>
           </div>
           <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
             <div class="job-listing-position custom-width w-25 mb-3 mb-sm-0">
-              <h2>{{ $publisher->name}}</h2>
+              <a href="publishers/{{ $publisher->id }}"><h2>{{ $publisher->name}}</h2></a>
               <strong>{{ $publisher->alias }}</strong>
             </div>
             <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-              <span class="icon-link"></span> {{ $publisher->website }}
+              <span class="icon-link">&nbsp;</span><a href="http://{{ $publisher->website }}">{{ $publisher->website }}</a>
             </div>
             <div class="job-listing-meta">
-              <span> {{ $publisher->journal->count() }} Journal</span>
+              <span> {{ $publisher->journals->count() }} Journal</span>
             </div>
           </div>
         </li>
@@ -57,7 +57,11 @@
 
       <div class="row pagination-wrap">
         <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-          <span>Showing 1-5 Of {{ $total->count() }} Publishers</span>
+          @if ( $total->count()  >= 5)
+          <span>Showing 1-5 Of {{ $total->count() }} Journals</span>
+          @else
+          <span>Showing {{ $total->count() }} Journals</span>
+          @endif
         </div>
         <div class="col-md-6 text-center text-md-right">
           <div class="ml-auto">

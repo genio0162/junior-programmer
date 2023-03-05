@@ -20,7 +20,7 @@ public function show($id){
         'title' => "Publisher",
         'publisher' => Publisher::find($id),
         'journals' => Journal::where('publisher_id', $id)->paginate(5),
-        'total' => Journal::all()
+        'total' => Journal::where('publisher_id', $id)
     ]);
 }
 }

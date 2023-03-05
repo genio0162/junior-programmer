@@ -12,31 +12,31 @@
         </div>
       </div>
     </div>
-    <section class="site-section services-section bg-light block__62849" id="next-section">
-        <div class="container">
+  </section>
 
-          <div class="row">
-            @foreach ($subjects as $subject )
-            <div class="col-12 col-md-12 col-lg-2 mb-4 mb-lg-5">
-              <a href="service-single.html" class="block__16443 text-center d-block">
-                <span class="custom-icon mx-auto"><span class="icon-tag d-block"></span></span>
-                <h3>{{ $subject->name }}</h3>
-              </a>
+  <section class="site-section">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+          <div class="d-flex align-items-center">
+            <div>
+              <h2>{{ $user->name }}</h2>
+              <div>
+                <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{ $user->publisher->name }}</span>
+                <span class="m-2"><span class="icon-inbox mr-2"></span>{{ $user->email}}</span><br><br>
+                <h5>{{ $user->articles->count() }} Articles Published</h5>
+              </div>
             </div>
-            @endforeach
           </div>
+        </div>
+    </div>
 
       <section class="site-section">
         <div class="container">
-          <div class="row mb-5 justify-content-center">
-            <div class="col-md-7 text-center">
-              <h2 class="section-title mb-2">{{ $total->count() }} journal</h2>
-            </div>
-          </div>
           <form method="post" class="search-jobs-form">
             <div class="row mb-5">
               <div class="col-12 col-sm-6 col-md-6 col-lg-9 mb-4 mb-lg-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Journal Name ...">
+                <input type="text" class="form-control form-control-lg" placeholder="Title ...">
               </div>
               <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                 <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search</button>
@@ -46,29 +46,20 @@
 
 
           <ul class="mb-5">
-            @foreach ($journals as $journal )
+            @foreach ( $articles as $article )
             <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-              <a href="journals/{{ $journal['id'] }}"></a>
-              <div class="job-listing-logo">
-                <img src="../images/{{ $journal["img"] }}" alt="Free Website Template by Free-Template.co" class="img-fluid">
-              </div>
-
               <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-                <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                  <h2>{{ $journal->title}}</h2>
-                  <strong>{{ $journal->publisher->name }}</strong><br>
-                <strong>JOURNAL ISSN: {{ $journal->issn }} EISSN: {{ $journal->eissn }}</strong><br>
-                @foreach ($journal->subjects as $s )
-                <strong class="icon-tag mr-2">
-                  <a href="/subjects/{{ $s->id }}">{{ $s->name }}</a>&nbsp; |
-                </strong>
-                 @endforeach
+                <div class="job-listing-position custom-width w-25 mb-3 mb-sm-0">
+                  <a href="/article/{{ $article->id }}"><h2>{{ $article->title }}</h2></a>
+                  <a href="/author/{{ $article->user->id }}"><strong>{{ $article->user->name }}</strong></a><br>
+                  <strong>Jurnal : {{ $article->journal->title }}</strong><br>
+                  <strong>Publisher : {{ $article->publisher->name }}</strong>
                 </div>
                 <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                  <span class="icon-link"><a href="http://{{ $journal->webiste }}">{{ $journal->website }}</a></span>
+                  <span class="icon-download"></span> download original |&nbsp;<span class="icon-note"></span> Full PDF
                 </div>
                 <div class="job-listing-meta">
-                  <span> 1 Journal</span>
+                  <span class="badge badge-success">Available</span>
                 </div>
               </div>
             </li>
@@ -78,23 +69,21 @@
           <div class="row pagination-wrap">
             <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
               @if ( $total->count()  >= 5)
-              <span>Showing 1-5 Of {{ $total->count() }} Journals</span>
+              <span>Showing 1-5 Of {{ $total->count() }} Article</span>
               @else
-              <span>Showing {{ $total->count() }} Journals</span>
+              <span>Showing {{ $total->count() }} Article</span>
               @endif
             </div>
             <div class="col-md-6 text-center text-md-right">
               <div class="ml-auto">
                 <div class="d-inline-block">
-                  {{ $journals->links() }}
+                  {{ $articles->links() }}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-        </div>
-      </section>
-
-
-  @endsection
+    </div>
+  </section>
+@endsection

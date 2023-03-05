@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\JournalController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\PublisherController;
 use App\Models\Article;
 use App\Models\Journal;
 use App\Models\Publisher;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\PublisherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +21,16 @@ use App\Models\Publisher;
 |
 */
 
-Route::get('/', function () {
-    return view('index' ,[
-        'title' => "Home",
-        'publishers' => Publisher::all(),
-        'journals' => Journal::all(),
-        'articles' => Article::all()
-    ]);
-});
+Route::get('/', [JournalController::class, 'main']);
 
 Route::get('/publishers', [PublisherController::class, 'index']);
 Route::get('/publishers/{id}', [PublisherController::class, 'show']);
 
 Route::get('/journals', [JournalController::class, 'index']);
 Route::get('/journals/{id}', [JournalController::class, 'show']);
+
+Route::get('/article/{id}', [ArticleController::class, 'index']);
+
+Route::get('/author/{id}', [AuthorController::class, 'index']);
 
 Route::get('/subjects', [SubjectController::class, 'index']);

@@ -18,4 +18,8 @@ class Journal extends Model
     {
         return $this->belongsToMany(Subject::class);
     }
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
 }

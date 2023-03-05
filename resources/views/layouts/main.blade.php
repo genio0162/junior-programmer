@@ -8,7 +8,6 @@
     <meta name="keywords" content="" />
     <meta name="author" content="Free-Template.co" />
     <link rel="shortcut icon" href="ftco-32x32.png">
-
     <link rel="stylesheet" href="../css/custom-bs.css">
     <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="../css/bootstrap-select.min.css">
@@ -17,12 +16,10 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body id="top">
-
   <div id="overlayer"></div>
   <div class="loader">
     <div class="spinner-border text-primary" role="status">
@@ -32,7 +29,6 @@
 
 
 <div class="site-wrap">
-
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -41,7 +37,6 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
-
 
     <!-- NAVBAR -->
     <header class="site-navbar mt-3">
@@ -56,7 +51,6 @@
             </div>
             <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
           </div>
-
         </div>
       </div>
     </header>
@@ -120,7 +114,6 @@
       </footer>
 
     </div>
-
       <!-- SCRIPTS -->
       <script src="../js/jquery.min.js"></script>
       <script src="../js/bootstrap.bundle.min.js"></script>
@@ -128,13 +121,10 @@
       <script src="../js/stickyfill.min.js"></script>
       <script src="../js/jquery.fancybox.min.js"></script>
       <script src="../js/jquery.easing.1.3.js"></script>
-
       <script src="../js/jquery.waypoints.min.js"></script>
       <script src="../js/jquery.animateNumber.min.js"></script>
       <script src="../js/owl.carousel.min.js"></script>
-
       <script src="../js/bootstrap-select.min.js"></script>
-
       <script src="../js/custom.js"></script>
     </body>
   </html>

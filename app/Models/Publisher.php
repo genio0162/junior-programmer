@@ -10,7 +10,15 @@ class Publisher extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function journal(){
+    public function journals(){
         return $this->hasMany(Journal::class);
+    }
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
+
+    public function users(){
+        return $this->hasMany(User::class);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('img');
             $table->string('abstract');
+            $table->string('description');
             $table->string('website');
             $table->foreignId('publisher_id');
             $table->string('issn')->unique();

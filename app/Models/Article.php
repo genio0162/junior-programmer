@@ -9,4 +9,16 @@ class Article extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function journal(){
+        return $this->belongsTo(Journal::class);
+    }
+
+    public function publisher(){
+        return $this->belongsTo(Publisher::class);
+    }
 }

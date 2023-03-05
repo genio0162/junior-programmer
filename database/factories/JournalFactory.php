@@ -20,6 +20,7 @@ class JournalFactory extends Factory
             'title' => fake()->sentence(3),
             'img' => 'journal.jpg',
             'abstract' => fake()->text(250),
+            'description' => fake()->text(250),
             'website' => 'www.unmuh.com',
             'publisher_id' => mt_rand(1,50),
             'issn' => fake()->randomNumber(5, true),

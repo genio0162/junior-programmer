@@ -31,7 +31,7 @@
                 <span class="m-2"><span class="icon-note mr-2"></span>  EISSN: {{ $journal->eissn }} </span><br>
                 <span class="m-2"><span class="icon-tag mr-2"></span>
                 @foreach ($journal->subjects as $s )
-                <a href="/subjects/{{ $s->slug }}"> {{ $s->name }} </a>|
+                <a href="/subjects/{{ $s->id }}"> {{ $s->name }} </a>|
                 @endforeach
             </span>
                 <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="http://{{ $journal->website }}">{{ $journal->website }}</a></span></span>
@@ -55,18 +55,21 @@
           </form>
 
 
-          <ul class="job-listings mb-5">
-            @foreach ($articles as $article )
+          <ul class="mb-5">
+            @foreach ( $articles as $article )
             <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-              <a href="articles/{{ $article->id }}">{{ $article->title }}</a>
-
               <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-                <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                  {{-- <strong>{{ $journal->publisher->name }}</strong><br>
-                  <strong>JOURNAL ISSN: {{ $journal->issn }} EISSN: {{ $journal->eissn }}</strong> --}}
+                <div class="job-listing-position custom-width w-25 mb-3 mb-sm-0">
+                  <a href="/article/{{ $article->id }}"><h2>{{ $article->title }}</h2></a>
+                  <a href="/author/{{ $article->user->id }}"><strong>{{ $article->user->name }}</strong></a><br>
+                  <strong>Jurnal : {{ $article->journal->title }}</strong><br>
+                  <strong>Publisher : {{ $article->publisher->name }}</strong>
                 </div>
                 <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                  {{-- <span class="icon-room"></span> {{ $journal['website'] }} --}}
+                  <span class="icon-download"></span> download original |&nbsp;<span class="icon-note"></span> Full PDF
+                </div>
+                <div class="job-listing-meta">
+                  <span class="badge badge-success">Available</span>
                 </div>
               </div>
             </li>
@@ -75,7 +78,11 @@
 
           <div class="row pagination-wrap">
             <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-              <span>Showing 1-5 Of {{ $total->count() }} journals</span>
+              @if ( $total->count() >= 5)
+              <span>Showing 1-5 Of {{ $total->count() }} Articles</span>
+              @else
+              <span>Showing {{ $total->count() }} Articles</span>
+              @endif
             </div>
             <div class="col-md-6 text-center text-md-right">
               <div class="ml-auto">
