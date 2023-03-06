@@ -12,7 +12,7 @@ class AuthorController extends Controller
         return view('author' ,[
             'title' => "Author",
             'user' => User::find($id),
-            'articles' => Article::where('user_id' , $id)->paginate(5),
+            'articles' => Article::where('user_id' , $id)->filter(request(['search']))->paginate(5),
             'total' => Article::where('user_id', $id)
         ]);
     }

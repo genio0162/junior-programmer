@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('main')
 <section class="section-hero overlay inner-page bg-image" style="background-image: url('../images/hero_1.jpg');" id="home-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7">
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <div class="col-md-7 mt-5">
           <h1 class="text-white font-weight-bold">{{ $title }}</h1>
           <div class="custom-breadcrumbs">
             <a href="/">Home</a> <span class="mx-2 slash">/</span>
@@ -23,9 +23,9 @@
             <p class=" d-flex align-items-center mb-4 text-primary">Jurnal : '{{ $article->journal->title }}'</p>
             <hr>
             <h2 class="text-center">{{ $article->title }}</h2>
-            <a class="text-center"  href="/author/{{ $article->user_id }}"><p class="text-center">{{ $article->user->name }}</a>({{ $article->publisher->name }})</p>
+            <a class="text-center"  href="/author/{{ $article->user_id }}"><p class="text-center">{{ $article->user->name }}</a>&nbsp;({{ $article->publisher->name }})</p>
             <hr style="margin: 0px;">
-            <hr style="margin-top: 0px;">
+            <hr style="margin-top: 1px;">
           </div>
           <div class="mb-5">
             <h3 class="h5 d-flex align-items-center mb-4 text-primary"></span>Abstract</h3>
@@ -37,7 +37,7 @@
             </p>
           </div>
           <hr style="margin: 0px;">
-          <hr style="margin-top: 0px;">
+          <hr style="margin-top: 2px;">
         </div>
 
         <div class="col-lg-4">

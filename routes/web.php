@@ -21,7 +21,7 @@ use App\Http\Controllers\PublisherController;
 |
 */
 
-Route::get('/', [JournalController::class, 'main']);
+Route::get('/', [ArticleController::class, 'index']);
 
 Route::get('/publishers', [PublisherController::class, 'index']);
 Route::get('/publishers/{id}', [PublisherController::class, 'show']);
@@ -29,8 +29,9 @@ Route::get('/publishers/{id}', [PublisherController::class, 'show']);
 Route::get('/journals', [JournalController::class, 'index']);
 Route::get('/journals/{id}', [JournalController::class, 'show']);
 
-Route::get('/article/{id}', [ArticleController::class, 'index']);
+Route::get('/article/{id}', [ArticleController::class, 'show']);
 
 Route::get('/author/{id}', [AuthorController::class, 'index']);
 
 Route::get('/subjects', [SubjectController::class, 'index']);
+Route::get('/subjects/{id}', [SubjectController::class, 'show']);

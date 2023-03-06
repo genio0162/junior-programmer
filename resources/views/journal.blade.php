@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('main')
 <section class="section-hero overlay inner-page bg-image" style="background-image: url('../images/hero_1.jpg');" id="home-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7">
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <div class="col-md-7 mt-5">
           <h1 class="text-white font-weight-bold">{{ $title }}</h1>
           <div class="custom-breadcrumbs">
             <a href="/">Home</a> <span class="mx-2 slash">/</span>
@@ -43,10 +43,10 @@
       </div>
       <section class="site-section">
         <div class="container">
-          <form method="post" class="search-jobs-form">
+          <form action="/journals/{{ $journal->id }}" method="get" class="search-jobs-form">
             <div class="row mb-5">
               <div class="col-12 col-sm-6 col-md-6 col-lg-9 mb-4 mb-lg-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Journal Name, ISSN, EISSN ...">
+                <input type="text" name="article" class="form-control form-control-lg" placeholder="Title article ... " value="{{ request('article') }}">
               </div>
               <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                 <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search</button>
@@ -54,7 +54,7 @@
             </div>
           </form>
 
-
+          @if ($articles->count())
           <ul class="mb-5">
             @foreach ( $articles as $article )
             <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
@@ -81,7 +81,7 @@
               @if ( $total->count() >= 5)
               <span>Showing 1-5 Of {{ $total->count() }} Articles</span>
               @else
-              <span>Showing {{ $total->count() }} Articles</span>
+              <span>Showing {{ $articles->count() }} Articles</span>
               @endif
             </div>
             <div class="col-md-6 text-center text-md-right">
@@ -92,6 +92,9 @@
               </div>
             </div>
           </div>
+          @else
+<p class="text-center"> No Articles Found.</p>
+@endif
         </div>
       </section>
     </div>
