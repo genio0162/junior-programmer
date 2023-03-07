@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('img');
             $table->string('alias');
-            $table->string('city');
-            $table->string('province');
+            $table->foreignId('regency_id');
+            $table->foreignId('province_id');
             $table->string('website');
             $table->timestamps();
         });

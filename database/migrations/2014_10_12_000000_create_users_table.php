@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('publisher_id');
-            $table->foreignId('role_id');
-            $table->boolean('is_active');
+            $table->foreignId('publisher_id')->nullable();
+            $table->foreignId('role_id')->default(3)->nullable();
+            $table->boolean('is_active')->default(0)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

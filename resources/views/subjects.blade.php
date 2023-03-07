@@ -14,7 +14,6 @@
     </div>
     <section class="site-section services-section bg-light block__62849" id="next-section">
         <div class="container">
-
           <div class="row">
             @foreach ($subjects as $subject )
             <div class="col-12 col-md-12 col-lg-2 mb-4 mb-lg-5">
@@ -31,7 +30,12 @@
         <div class="container">
           <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
-              <h2 class="section-title mb-2">{{ $journals->count() }} Journal Found</h2>
+              @if (request('search')||request('subject'))
+                <h2 class="section-title mb-2">{{ $journals->count() }} Journal Found</h2>
+                @else
+                <h2 class="section-title mb-2">{{ $total->count() }} Journal Found</h2>
+              @endif
+
             </div>
           </div>
           <form action="/subjects" method="get" class="search-jobs-form">

@@ -50,4 +50,12 @@ class Journal extends Model
     public function articles(){
         return $this->hasMany(Article::class);
     }
+
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
+
+    public function regency(){
+        return $this->belongsTo(Regency::class);
+    }
 }

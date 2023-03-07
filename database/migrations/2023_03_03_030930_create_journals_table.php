@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('journals', function (Blueprint $table) {
             $table->id();
+            $table->string('contact_name')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->integer('contact_phone')->nullable();
+            $table->string('journal_email')->nullable();
+            $table->string('contact_address')->nullable();
+            $table->foreignId('province_id')->nullable();
+            $table->foreignId('regency_id')->nullable();
             $table->string('title');
             $table->string('img');
             $table->string('abstract');

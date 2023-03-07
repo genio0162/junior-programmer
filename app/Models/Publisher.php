@@ -38,4 +38,12 @@ class Publisher extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
+
+    public function regency(){
+        return $this->belongsTo(Regency::class);
+    }
 }

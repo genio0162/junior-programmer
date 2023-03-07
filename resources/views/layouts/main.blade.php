@@ -46,8 +46,28 @@
           @include('partials.nav')
           <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
             <div class="ml-auto">
+
               <a href="post-job.html" class="btn btn-outline-white border-width-2 d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Article</a>
-              <a href="login.html" class="btn btn-primary border-width-2 d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
+              @auth
+              <nav class="ml-5 site-navigation">
+                <ul class="site-menu js-clone-nav d-xl-block ml-0 pl-0">
+                  <li class="has-children">
+                    <a href="#">Welcome back, {{ auth()->user()->name }}</a>
+                    <ul class="dropdown">
+                      <li><a href="/backboard"><span class="mr-2 icon-home"></span>Dashboard</a></li>
+                      <hr>
+                      <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="button-solid dropdown-item"> <span class="mr-2 icon-close"></span>Logout</a></button>
+                      </form>
+                    </ul>
+                  </li>
+            </nav>
+                @else
+                <a href="/login" class="btn btn-primary border-width-2 d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
+              @endauth
+
+
             </div>
             {{-- <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a> --}}
           </div>

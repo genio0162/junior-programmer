@@ -20,8 +20,8 @@ class PublisherFactory extends Factory
             "name" => fake()->words(2, true),
             "img" => 'unmuh.jpg',
             "alias" => 'UI',
-            'city' => fake()->city(),
-            'province' => fake()->state(),
+            'regency_id' => mt_rand(1,514),
+            'province_id' => mt_rand(1,33),
             'website' => "www.unmuh.com"
         ];
     }
