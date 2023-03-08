@@ -16,12 +16,22 @@
                             <div>
                             <form method="get" action="/backboard/publishers">
                               <span>
-                                    <input id="search" type="text" name="search" class="form-control input-sm w-50" placeholder="Search ..." autofocus >
+                                    <input id="search" type="text" name="search" class="form-control input-sm w-50" placeholder="Search ..." value="{{ request('search') }}" autofocus >
                                     <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span>Search</button>
                                 </span>
                             </form>
                         </div>
                         <a href="/backboard/publishers/create" class="btn btn-info mt-4 mb-3"><i class="fa fa-plus mr-1"></i>Create New Publisher</a>
+                        @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          <strong>Congrats!!</strong> {{ session('success') }}
+                        </div>
+                        @endif
+                        @if (session()->has('deleted'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          <strong>Done!!</strong> {{ session('deleted') }}
+                        </div>
+                        @endif
                   <table class="table" style="width:100%">
                     <thead>
                       <tr>
@@ -34,20 +44,27 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-
                     <tbody>
-                        @foreach ($publishers as $p )
+                      @php $i = 1; @endphp
+                        @foreach ($publishers as $p)
+                        @if ($p->id == 1)
+                          @continue
+                        @endif
                       <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
+                        <th scope="row"> {{ $i }}  @php $i++; @endphp</th>
                         <td>{{ $p->name }}</td>
                         <td>{{ $p->alias }}</td>
-                        <td>{{ $p->city }}</td>
-                        <td>{{ $p->province }}</td>
+                        <td>{{ $p->regency->name }}</td>
+                        <td>{{ $p->province->name }}</td>
                         <td>{{ $p->website }}</td>
                         <td>
                             <a href="/backboard/publishers/{{ $p->id }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
-                            <a href="/backboard" class="btn btn-warning"><span class="fa fa-edit"></span></a>
-                            <a href="/backboard" class="btn btn-danger"><span class="fa fa-close"></span></a>
+                            <a href="/backboard/publishers/{{ $p->id }}/edit" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                            <form action="/backboard/publishers/{{ $p->id }}" method="post" class="d-inline">
+                              @method('delete')
+                              @csrf
+                            <button class="btn btn-danger" onclick="return confirm('You sure to deleted data ?')"><span class="fa fa-close"></span></button>
+                          </form>
                         </td>
                       </tr>
                       @endforeach

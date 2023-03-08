@@ -64,13 +64,18 @@
 @if ($articles->count())
 <ul class="mb-5">
   @foreach ( $articles as $article )
+
   <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
     <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
       <div class="job-listing-position custom-width w-25 mb-3 mb-sm-0">
         <a href="/article/{{ $article->id }}"><h2>{{ $article->title }}</h2></a>
         <a href="/author/{{ $article->user->id }}"><strong>{{ $article->user->name }}</strong></a><br>
         <strong>Jurnal : {{ $article->journal->title }}</strong><br>
-        <strong>Publisher : {{ $article->publisher->name }}</strong>
+        @if ($article->publisher === null )
+        <strong>Publisher : - </strong>
+          @else
+          <strong>Publisher : {{ $article->publisher->name }}</strong>
+        @endif
       </div>
       <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
         <span class="icon-download"></span> download original |&nbsp;<span class="icon-note"></span> Full PDF

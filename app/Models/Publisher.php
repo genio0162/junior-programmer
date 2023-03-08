@@ -16,8 +16,8 @@ class Publisher extends Model
         $query->when($filters['search'] ?? false , function($query, $search){
             return $query->where('name', 'like' , '%' . $search . '%')
                         ->orWhere('alias', 'like' , '%' . $search . '%')
-                        ->orWhere('city', 'like' , '%' . $search . '%')
-                        ->orWhere('province', 'like' , '%' . $search . '%');
+                        ->orWhere('province_name', 'like' , '%' . $search . '%')
+                        ->orWhere('regency_name', 'like' , '%' . $search . '%');
         });
 
         // $query->when($filters['article'] ?? false , function($query, $article){

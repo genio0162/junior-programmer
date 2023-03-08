@@ -34,9 +34,9 @@
                 <a href="/subjects/{{ $s->id }}"> {{ $s->name }} </a>|
                 @endforeach
             </span>
-                <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="http://{{ $journal->website }}">{{ $journal->website }}</a></span></span>
+                <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="{{ $journal->website }}">{{ $journal->website }}</a></span></span>
               </div><br>
-              <p>{{ $journal->abstract }}</p>
+              <p>{{ $journal->description }}</p>
             </div>
           </div>
         </div>

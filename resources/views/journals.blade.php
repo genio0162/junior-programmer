@@ -33,6 +33,9 @@
       @if ($journals->count())
       <ul class="mb-5">
         @foreach ($journals as $journal )
+        @if ($journal->id == 1)
+                          @continue
+                        @endif
         <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="/journals/{{ $journal->id }}"></a>
             <div class="job-listing-logo">
@@ -51,7 +54,7 @@
                 @endforeach
               </div>
               <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                <span class="icon-link">&nbsp;<a href="http://{{ $journal->webiste }}">{{ $journal->website }}</a></span>
+                <span class="icon-link">&nbsp;<a href="{{ $journal->webiste }}">{{ $journal->website }}</a></span>
               </div>
               <div class="job-listing-meta">
                 <span> {{ $journal->articles->count() }} Articles</span>

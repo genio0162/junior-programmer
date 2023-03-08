@@ -26,7 +26,7 @@ class ArticleController extends Controller
                 'title' => "Home",
                 'journals' => Journal::all(),
                 'publishers' => Publisher::all(),
-                'articles' => Article::latest()->paginate(5),
+                'articles' => Article::paginate(5),
                 'total' => Journal::all(),
                 'totalAT' => Article::all(),
                 'totalA' => Article::all()

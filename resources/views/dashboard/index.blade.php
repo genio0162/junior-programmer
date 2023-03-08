@@ -6,24 +6,20 @@
             <div class="row" style="display: inline-block;" >
             <div class="tile_count">
               <div class="col-md-3 col-sm-6  tile_stats_count">
+                <span class="count_top"><i class="fa fa-user"></i> Total Publishers</span>
+                <div class="count">{{ $publishers->count() }}</div>
+              </div>
+              <div class="col-md-3 col-sm-6  tile_stats_count">
+                <span class="count_top"><i class="fa fa-clock-o"></i> Total Journals</span>
+                <div class="count">{{ $journals->count() }}</div>
+              </div>
+              <div class="col-md-3 col-sm-6  tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Total Articles</span>
-                <div class="count">2500</div>
-                <span class="count_bottom"><i class="green">4% </i>Total Journal</span>
-              </div>
-              <div class="col-md-3 col-sm-6  tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Total Publishers</span>
-                <div class="count">123.50</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
-              </div>
-              <div class="col-md-3 col-sm-6  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Journals</span>
-                <div class="count green">2,500</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+                <div class="count green">{{ $articles->count() }}</div>
               </div>
               <div class="col-md-3 col-sm-6  tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-                <div class="count green">2,500</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+                <div class="count green">{{ $users->count() }}</div>
               </div>
             </div>
           </div>

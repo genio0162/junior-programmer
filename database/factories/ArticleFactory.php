@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => fake()->sentence(mt_rand(3,5)),
-            'user_id' => mt_rand(1,20),
+            'user_id' => mt_rand(3,20),
             'journal_id' => mt_rand(1,50),
             'publisher_id' => mt_rand(1,50),
             'abstract' => fake()->text(200),

@@ -71,7 +71,7 @@
                  @endforeach
                 </div>
                 <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                  <span class="icon-link">&nbsp;<a href="http://{{ $journal->webiste }}">{{ $journal->website }}</a></span>
+                  <span class="icon-link">&nbsp;<a href="{{ $journal->webiste }}">{{ $journal->website }}</a></span>
                 </div>
                 <div class="job-listing-meta">
                   <span> {{ $journal->articles->count() }}</span>

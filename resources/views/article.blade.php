@@ -23,6 +23,7 @@
             <p class=" d-flex align-items-center mb-4 text-primary">Jurnal : '{{ $article->journal->title }}'</p>
             <hr>
             <h2 class="text-center">{{ $article->title }}</h2>
+            
             <a class="text-center"  href="/author/{{ $article->user_id }}"><p class="text-center">{{ $article->user->name }}</a>&nbsp;({{ $article->publisher->name }})</p>
             <hr style="margin: 0px;">
             <hr style="margin-top: 1px;">
@@ -45,14 +46,14 @@
             <small class="text-primary  mt-3 pl-3 mb-3 "></>Journal Info</small>
             <ul class="list-unstyled pl-3 mb-0">
                 <h5 class="text-primary h5 mt-3 pl-3 mb-3 "><a href="/journals/{{ $article->journal->id }}">{{ $article->journal->title }}</a></h5>
-              <li class="mb-2"><strong class="text-black">Website:&nbsp;</strong><a href="http://{{ $article->journal->website }}">{{ $article->journal->website }}</a></li>
+              <li class="mb-2"><strong class="text-black">Website:&nbsp;</strong><a href="{{ $article->journal->website }}">{{ $article->journal->website }}</a></li>
               <li class="mb-2"><strong class="text-black">Publisher:</strong>&nbsp;<a href="/publishers/{{ $article->journal->publisher_id }}">{{ $article->journal->publisher->name }}</a></li>
               <li class="mb-2"><strong class="text-black">Subject:</strong>  @foreach ($article->journal->subjects as $s )
                 <strong class="icon-tag mr-2">
                   <a href="/subjects/{{ $s->id }}">{{ $s->name }}</a>&nbsp |
                 </strong>
                 @endforeach</li>
-              <li class="mb-2"><strong class="text-black">Description:</strong><p>{{ $article->journal->abstract }}</p></li>
+              <li class="mb-2"><strong class="text-black">Description:</strong><p>{{ $article->journal->description }}</p></li>
             </ul>
           </div>
 

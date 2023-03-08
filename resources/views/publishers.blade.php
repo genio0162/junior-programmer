@@ -34,6 +34,9 @@
       @if ($publishers->count())
       <ul class="mb-5">
         @foreach ($publishers as $publisher )
+        @if ($publisher->id == 1)
+                          @continue
+                        @endif
         <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
           <a href="publishers/{{ $publisher->id }}"></a>
           <div class="job-listing-logo">
@@ -45,7 +48,7 @@
               <strong>{{ $publisher->alias }}</strong>
             </div>
             <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-              <span class="icon-link">&nbsp;</span><a href="http://{{ $publisher->website }}">{{ $publisher->website }}</a>
+              <span class="icon-link">&nbsp;</span><a href="{{ $publisher->website }}">{{ $publisher->website }}</a>
             </div>
             <div class="job-listing-meta">
               <span> {{ $publisher->journals->count() }} Journal</span>

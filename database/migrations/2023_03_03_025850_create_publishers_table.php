@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('publishers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->string('alias');
+            $table->string('province_name')->nullable();
+            $table->string('regency_name')->nullable();
             $table->foreignId('regency_id');
             $table->foreignId('province_id');
             $table->string('website');

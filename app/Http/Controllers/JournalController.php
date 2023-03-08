@@ -15,12 +15,12 @@ class JournalController extends Controller
             return view('journals' ,[
                 'title' => "Journal",
                 'journals' => Journal::latest()->filter(request(['search']))->paginate(5),
-                'total' => Journal::latest()->filter(request(['search'])),
+                'total' => Journal::latest()->filter(request(['search']))->paginate(5),
             ]);
         }else{
             return view('journals' ,[
                 'title' => "Journal",
-                'journals' => Journal::latest()->paginate(5),
+                'journals' => Journal::paginate(5),
                 'total' => Journal::all(),
             ]);
         }

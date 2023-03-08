@@ -27,8 +27,8 @@
               <h2>{{ $publisher->name }}</h2>
               <div>
                 <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{ $publisher->alias }}</span>
-                <span class="m-2"><span class="icon-room mr-2"></span>{{ $publisher->city .', '. $publisher->province }}</span>
-                <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="http://{{ $publisher->website }}">{{ $publisher->website }}</a></span></span>
+                <span class="m-2"><span class="icon-room mr-2"></span>{{ $publisher->regency_name .', '. $publisher->province_name }}</span>
+                <span class="m-2"><span class="icon-link mr-2"></span><span class="text-primary"><a href="{{ $publisher->website }}">{{ $publisher->website }}</a></span></span>
               </div><br>
               <h5>{{ $publisher->journals->count() }} Journal Published</h5>
             </div>
@@ -51,6 +51,9 @@
 
           <ul class="mb-5">
             @foreach ($journals as $journal )
+            @if ($journal->id == 1)
+                          @continue
+                        @endif
             <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
                 <a href="/journals/{{ $journal->id }}"></a>
                 <div class="job-listing-logo">
@@ -69,7 +72,7 @@
                     @endforeach
                   </div>
                   <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                    <span class="icon-link"><a href="http://{{ $journal->webiste }}"> {{ $journal->website }}</a></span>
+                    <span class="icon-link"><a href="{{ $journal->webiste }}"> {{ $journal->website }}</a></span>
                   </div>
                 </div>
               </li>

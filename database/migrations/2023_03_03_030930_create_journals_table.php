@@ -21,12 +21,11 @@ return new class extends Migration
             $table->foreignId('province_id')->nullable();
             $table->foreignId('regency_id')->nullable();
             $table->string('title');
-            $table->string('img');
-            $table->string('abstract');
+            $table->string('img')->nullable();
             $table->string('description');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->foreignId('publisher_id');
-            $table->string('issn')->unique();
+            $table->string('issn')->unique()->nullable();
             $table->string('eissn')->unique()->nullable();
             $table->timestamps();
         });
